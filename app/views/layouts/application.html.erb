@@ -11,6 +11,13 @@
   </head>
 
   <body>
+    <%= render "layouts/navigation" %>
     <%= yield %>
+    <%= render "layouts/footer" %>
+    
+<% if controller_name == 'homepage' && action_name == 'index' %>
+  <%= render 'layouts/floating_nav' %>
+<% end %>
+
   </body>
 </html>
