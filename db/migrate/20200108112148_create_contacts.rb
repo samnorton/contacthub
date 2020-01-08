@@ -10,7 +10,8 @@ class CreateContacts < ActiveRecord::Migration[5.2]
       t.string :city
       t.string :state
       t.string :zip
-      t.text :note
+      t.string :note
+      t.references :category, foreign_key: true
 
       t.timestamps
     end
