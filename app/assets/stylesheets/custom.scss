@@ -28,7 +28,7 @@
   }
   
   a.navbar-brand {
-    background: url('../img/logo.png') no-repeat;
+    background: url('logo.png') no-repeat;
     width: 213px;
     height: 27px;
   }
@@ -69,7 +69,7 @@
   section#big-hero {
     width: 100%;
     position: relative;
-    background: url('../img/intro-bg.png') center bottom no-repeat;
+    background: url('intro-bg.png') center bottom no-repeat;
     background-size: cover;
     padding: 120px 0 120px 0;
     margin-top: -3px;
