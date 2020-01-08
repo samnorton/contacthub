@@ -1,2 +1,113 @@
-<h1>Homepage#index</h1>
-<p>Find me in app/views/homepage/index.html.erb</p>
+
+<!-- Navigation Start -->
+  <header id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="#"></a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <%= link_to "Home", root_path, class: "nav-link", :"data-id" => "home" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "About", root_path, class: "nav-link", :"data-id" => "about" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Testimonials", root_path, class: "nav-link", :"data-id" => "testimonials" %>
+                </li>
+                <li class="nav-item dropdown">
+                  <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">My Account</a>
+                  <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Edit Profile</a> <a class="dropdown-item" href="#">My Contacts</a>
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Logout</a>
+                  </div>
+                </li>
+                <li class="nav-item link-button" id="login-link">
+                  <a class="nav-link" href="login.html">Login</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+<!-- Navigation End -->
+
+
+<!-- Big Hero Start -->
+
+  <section id="big-hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 pl-5">
+          <h1 class="display-4 main-text-white">Manage Your Contacts Online</h1>
+          <p class="lead sub-text-white">We provide seemless ways to manage your contacts. Keeping them on file and accessible online.</p><a class="btn btn-primary btn-lg main-btn" href="register.html" id="get-started" type="button">Get Started</a>
+        </div>
+        <div class="offset-lg-1 col-lg-6"> <%= image_tag "intro-img.svg", class: "img-fluid" %> </div>
+      </div>
+    </div>
+  </section>
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 mb-4">
+          <h1 class="display-5 main-text-blue text-center">Organize Your Contacts At Ease</h1>
+          <p class="lead sub-text-blue text-center">Your easy go online address book for with intuitive<br>
+          contact management for individuals, teams & small businesses.</p>
+        </div>
+        <div class="col-lg-5 offset-lg-1"><%= image_tag "list-img.svg", class: "img-fluid" %></div>
+        <div class="offset-lg-1 col-lg-5">
+          <p class="lead sub-text-blue left">If you’re doing all you can to organize all the people you are communicating with, you’re collecting contacts from different people categories, you might worry that some of your contacts are getting lost in the shuffle? Contact Hub makes it easy for you to:</p>
+          <div class="icon-box">
+            <i class="fa fa-users fa-2x icon-radius float-left"></i>
+            <p class="lead sub-text-blue float-right">Add, update, delete, and segment your contact list online.</p>
+          </div>
+          <div class="icon-box">
+            <i class="fa fa-tasks fa-2x icon-radius float-left"></i>
+            <p class="lead sub-text-blue float-right">Categorize your contacts accordingly so you can stay organize with your contact list.</p>
+          </div>
+          <div class="icon-box">
+            <i class="fa fa-book fa-2x icon-radius float-left"></i>
+            <p class="lead sub-text-blue float-right">Clean, manage, and grow your list. This app helps you stay organized year round.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Big Hero End -->
+
+<!-- Testimonials Start -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="display-5 main-text-blue text-center">Testimonials</h1> <%= image_tag "testimonial.jpg", class: "img-thumbnail img-rounded mx-auto d-block" %>
+          <p class="lead sub-text-blue text-center">"I love contact hub. It has been helpful to me so far in managing my contacts.<br>
+          I don't worry of loosing my contacts on my phone since I can easily jump on the app and take a<br>
+          look on my contacts per category. Definitely recommended."</p>
+          <h4 class="testimonials-name">- CHRISTINE JACOBS, Contact Hub User</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Testimonials End -->
+
+
+<!-- Footer Start -->
+  <footer>
+    <p class="text-center">© Copyright 2020 Contact Hub. All Rights Reserved.</p>
+  </footer>
+<!-- Footer End -->
+
+
+<!-- Floating Arrow Start -->
+  <div id="arrow-up">
+    <a href="#"><i class="fa fa-arrow-up fa-big"></i></a>
+  </div>
+<!-- Floating Arrow End -->
+
+
+ 
