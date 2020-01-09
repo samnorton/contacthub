@@ -2,8 +2,13 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contacts = Contact.page params[:page]
-    @contact = Contact.new
+    if params[:category_id] && !params[:category_id].empty? 
+      @contacts = Category.find(params[:category_id]).contacts.page params[:page]
+    else 
+      @contacts = Contact.page params[:page]
+    end
+    
+      @contact = Contact.new
   end
 
   def show
