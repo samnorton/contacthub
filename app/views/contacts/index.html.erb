@@ -7,7 +7,13 @@
         <div class="col-lg-8">
           <div class="card">
             <div class="card-header">
-              <strong class="float-left mt-1">Contact List</strong> <span><button class="btn btn-primary border-button float-right" data-target="#new-contact-modal" data-toggle="modal"><span><i class="fa fa-plus white"></i> Add New</span></button></span>
+              <strong class="float-left mt-1">Contact List</strong> <span>
+              
+              <%= link_to new_contact_path, class: "btn btn-primary border-button float-right", ":data-target" => "#new-contact-modal", ":data-toggle" => "modal" do %>
+                   <span><i class="fa fa-plus white"></i> Add New</span>
+               <% end %>
+
+             </span>
             </div>
             <%= render @contact %>
             <%= render 'layouts/pagination' %>

@@ -3,9 +3,9 @@ class ContactsController < ApplicationController
 
   def index
     if params[:category_id] && !params[:category_id].empty? 
-      @contacts = Category.find(params[:category_id]).contacts.page params[:page]
+      @contacts = Category.find(params[:category_id]).contacts.order(created_at: :desc).page params[:page]
     else 
-      @contacts = Contact.page params[:page]
+      @contacts = Contact.order(created_at: :desc).page params[:page]
     end
     
       @contact = Contact.new
@@ -65,6 +65,6 @@ class ContactsController < ApplicationController
     end
 
     def contact_params
-      params.require(:contact).permit(:name, :email, :mobile, :phone, :country, :address, :city, :state, :zip, :note)
+      params.require(:contact).permit(:name, :email, :mobile, :phone, :country, :address, :city, :state, :zip, :note, :category_id, :contact_avatar)
     end
 end

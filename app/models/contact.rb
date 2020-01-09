@@ -1,5 +1,6 @@
 class Contact < ApplicationRecord
   belongs_to :category
+  has_one_attached :contact_avatar
 
   validates :name, :email, :mobile, :phone, :country, :address, :city, :state, :zip, presence: true
   validates_length_of :name, minimum: 3
