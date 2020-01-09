@@ -1,2 +1,143 @@
-<h1>Contacts#new</h1>
-<p>Find me in app/views/contacts/new.html.erb</p>
+
+<!-- Form Start -->
+  <section class="form-contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 mx-auto center-box">
+
+
+      <%= form_for(@contact, html: {multipart: true}) do |f| %>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="display-5 main-text-blue text-center font-weight-bold">Add New Contact</h2>
+            </div>
+            <div class="card-body">
+
+         <div class="errors">
+                    <% if @contact.errors.any? %>
+                    <div class="alert alert-danger">
+                        <h4> Please correct the following errors: </h4>
+                           <% @contact.errors.full_messages.each do |err| %>
+                             <ul class="ml-5 mb-0 p-0">
+                                <li><%= err %> </li>
+                             </ul>
+                           <% end %>
+                       </div>
+                    <% end %>
+                </div>
+
+              <div class="form-group row">
+                <div class="col-md-5 mx-auto">
+
+                  <div class="container-avatar">
+                    <div class="avatar-upload">
+                      <div class="avatar-edit">
+                        <%= f.file_field :contact_avatar, id: "imageUpload" %>
+                        <label for="imageUpload"></label>
+                      </div>
+                      <div class="avatar-preview">
+                        <div id="imagePreview">
+                           <% if @contact.new_record? %>
+                             <%= image_tag "100x100.png" %>
+                            <% else %>
+                              <%= image_tag @contact.avatar %>
+                            <% end %>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :name, class: "col-lg-2 col-form-label" %> 
+                <div class="col-lg-10">
+                  <%= f.text_field :name, class: "form-control", id: "name", placeholder: "Name.." %>
+                </div>
+              </div>
+              <div class="form-group row">
+                 <%= f.label :email, class: "col-lg-2 col-form-label" %> 
+                <div class="col-lg-10">
+                  <%= f.text_field :email, class: "form-control", id: "email", placeholder: "Email.." %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :mobile, class: "col-lg-2 col-form-label" %> 
+                <div class="col-lg-10">
+                  <%= f.text_field :mobile, class: "form-control", id: "mobile", placeholder: "Mobile.." %>
+                </div>
+              </div>
+              <div class="form-group row">
+                 <%= f.label :phone, class: "col-lg-2 col-form-label" %> 
+                <div class="col-lg-10">
+                 <%= f.text_field :phone, class: "form-control", id: "phone", placeholder: "Phone.." %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :country, class: "col-lg-2 col-form-label" %>
+                <div class="col-lg-10">
+                   <%= f.text_field :country, class: "form-control", id: "country", placeholder: "Country.." %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :address, class: "col-lg-2 col-form-label" %>
+                <div class="col-lg-10">
+                  <%= f.text_field :address, class: "form-control", id: "address", placeholder: "Address.." %>
+                </div>
+              </div>
+              <div class="form-row">
+                 <%= f.label :location, class: "col-lg-2 col-form-label" %>
+                <div class="col-4">
+                 <%= f.text_field :city, class: "form-control", id: "city", placeholder: "City.." %>
+                </div>
+                <div class="col-4">
+                  <%= f.text_field :state, class: "form-control", id: "state", placeholder: "State.." %>
+                </div>
+                <div class="col-2">
+                   <%= f.text_field :zip, class: "form-control", id: "zip", placeholder: "Zip.." %>
+                </div>
+              </div>
+              <div class="form-group row category-mt">
+                 <%= f.label :category, class: "col-lg-2 col-form-label" %>
+                <div class="col-lg-5">
+                    <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Select Category" }, class: "form-control" %>
+                </div>
+                <div class="col-lg-3">
+                  <a class="btn btn-outline-secondary add-category-button btn-block mt-1" href="#" id="add-category-btn">Add Category</a>
+                </div>
+              </div>
+              <div class="form-group row" id="add-new-category">
+                <label class="col-lg-2 col-form-label" for="location">New Category:</label>
+                <div class="col-lg-10">
+                  <div class="input-group">
+                    <input aria-describedby="button-addon2" aria-label="Enter category name" class="form-control" name="group_id" placeholder="Enter category name" type="text">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary category-btn" id="button-addon2" type="button"><i class="fa fa-check"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                  <%= f.label :note, class: "col-lg-2 col-form-label" %>
+                <div class="col-lg-10">
+                   <%= f.text_area :note, class: "form-control", id: "note", placeholder: "Note..", rows: "3" %>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+               <%= f.submit "Save", class: "btn btn-primary border-button mb-3 ml-3", id: "save-btn" %>
+               <a class="btn btn-outline-secondary border-button mt-n3" data-dismiss="modal" href="#" id="cancel-btn">Cancel</a>
+            </div>
+          </div>
+
+           <% end %>
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Form End -->
+

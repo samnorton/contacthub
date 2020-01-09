@@ -20,13 +20,22 @@
 
 $(document).on('turbolinks:load', function(){
 
+// Scrolling Nav
 $(".nav-link").click(function(){
-   
     var topData = $( '#' + $(this).attr("data-id")).offset();
- 
     $('html, body').animate({
         scrollTop: topData.top
     }, 'slow');
    });
 
+
+   // Add Category Button
+   $("#add-new-category").hide();
+   $('#add-category-btn').click(function () {      
+     $("#add-new-category").slideToggle(function() {
+       $('#new_group').focus();
+     });
+     return false;
+   });
 });
+
