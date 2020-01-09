@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Category.destroy_all
 Contact.destroy_all
+Category.destroy_all
 
 category_ids = []
 
@@ -21,9 +21,7 @@ categories_count = category_ids.length
 
 contacts = []
 
-number_of_contacts = 20
-
-number_of_contacts.times do |i|
+19.times do |i|
   new_contact = {
       name: Faker::Name.name,
       email: Faker::Internet.email,
@@ -43,4 +41,4 @@ end
 
 Contact.create(contacts)
 
-p "#{number_of_contacts} contacts created."
+p "#{Contact.count} contacts created."
