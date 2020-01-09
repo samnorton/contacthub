@@ -1,0 +1,27 @@
+ <table class="table">
+             <% @contacts.each do |contact| %>
+              <tr>
+                <td class="middle">
+                  <div class="media">
+                    <div class="media-left">
+                      <%= link_to contacts_path, ":data-target" => "#view-contact-modal", ":data-toggle" => "modal" do %>
+                          <%= image_tag "100x100.png", class: "media-object img-thumbnail img-rounded mr-3" %> 
+                      <% end %>
+                    </div>
+                    <div class="media-body mt-2">
+                      <h4 class="media-heading"><a data-target="#view-contact-modal" data-toggle="modal" href="#"><%= contact.name %></a></h4>
+                      <address>
+                        <strong><i class="fa fa-map-marker"></i> <%= contact.city %>, <%= contact.state %>, <%= contact.country %>, <%= contact.zip %> </strong><br>
+                        <i class="fa fa-envelope"></i> <%= contact.email %>| <i class="fa fa-mobile"></i> <%= contact.mobile %> | <i class="fa fa-phone"></i> <%= contact.phone %> 
+                      </address>
+                    </div>
+                  </div>
+                </td>
+                <td class="middle" width="100">
+                  <div class="mt-5">
+                    <a class="btn btn-outline-secondary btn-circle btn-xs" data-target="#edit-contact-modal" data-toggle="modal" href="#" title="Edit"><i class="fa fa-edit"></i></a> <a class="btn btn-outline-secondary btn-circle btn-xs" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+            </table>
