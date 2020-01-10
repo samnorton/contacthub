@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
            render json: @group.errors.full_messages, status: :unprocessable_entity
         end
     end
-    
+
     private
 
     def category_params

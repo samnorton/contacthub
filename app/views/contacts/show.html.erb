@@ -1,0 +1,60 @@
+<!-- Form Start -->
+  <section class="form-contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mx-auto center-box">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="display-5 main-text-blue text-center font-weight-bold">Contact Information</h2>
+            </div>
+            <div class="card-body">
+              <div class="col-md-8 mx-auto">
+                <div class="container-avatar">
+                  <div class="avatar-upload">
+                    <div class="avatar-preview">
+                      <div id="imagePreview">
+                        <div id="imagePreview">
+                              <%= image_tag @contact.contact_avatar.attached? ? @contact.contact_avatar : "100x100.png" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <table class="table table-borderless">
+                  <tr>
+                    <th>Name:</th>
+                    <td><%= @contact.name %></td>
+                  </tr>
+                  <tr>
+                    <th>Email:</th>
+                    <td><%= @contact.email %></td>
+                  </tr>
+                  <tr>
+                    <th>Mobile</th>
+                    <td><%= @contact.mobile %></td>
+                  </tr>
+                  <tr>
+                    <th>Phone</th>
+                    <td><%= @contact.phone %></td>
+                  </tr>
+                  <tr>
+                    <th>Address:</th>
+                    <td><%= @contact.address %>, <%= @contact.city %>, <%= @contact.state %>, <%= @contact.country %>, <%= @contact.zip %></td>
+                  </tr>
+                  <tr>
+                    <th>Category:</th>
+                    <td><%= @contact.category.name %></td>
+                  </tr>
+                  <tr>
+                    <th>Notes:</th>
+                    <td><%= @contact.note %></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Form End -->
