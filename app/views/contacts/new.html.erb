@@ -101,23 +101,25 @@
               <div class="form-group row category-mt">
                  <%= f.label :category, class: "col-lg-2 col-form-label" %>
                 <div class="col-lg-5">
-                    <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Select Category" }, class: "form-control" %>
+                    <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Select Category" }, id: "category_select", class: "form-control" %>
                 </div>
                 <div class="col-lg-3">
                   <a class="btn btn-outline-secondary add-category-button btn-block mt-1" href="#" id="add-category-btn">Add Category</a>
                 </div>
               </div>
+
               <div class="form-group row" id="add-new-category">
                 <label class="col-lg-2 col-form-label" for="location">New Category:</label>
                 <div class="col-lg-10">
                   <div class="input-group">
-                    <input aria-describedby="button-addon2" aria-label="Enter category name" class="form-control" name="group_id" placeholder="Enter category name" type="text">
+                        <input id="new-category" name="new-category" class="form-control"  placeholder="Enter category name" type="text">
                     <div class="input-group-append">
-                      <button class="btn btn-outline-secondary category-btn" id="button-addon2" type="button"><i class="fa fa-check"></i></button>
+                        <button class="btn btn-outline-secondary category-btn" id="save-new-category-btn" type="button"><i class="fa fa-check"></i></button>
                     </div>
                   </div>
                 </div>
               </div>
+
               <div class="form-group row">
                   <%= f.label :note, class: "col-lg-2 col-form-label" %>
                 <div class="col-lg-10">

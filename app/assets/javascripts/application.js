@@ -1,3 +1,4 @@
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -20,22 +21,53 @@
 
 $(document).on('turbolinks:load', function(){
 
-// Scrolling Nav
-$(".nav-link").click(function(){
-    var topData = $( '#' + $(this).attr("data-id")).offset();
-    $('html, body').animate({
-        scrollTop: topData.top
-    }, 'slow');
-   });
-
-
-   // Add Category Button
-   $("#add-new-category").hide();
-   $('#add-category-btn').click(function () {      
-     $("#add-new-category").slideToggle(function() {
-       $('#new_group').focus();
+  // Scrolling Nav
+  $(".nav-link").click(function(){
+      var topData = $( '#' + $(this).attr("data-id")).offset();
+      $('html, body').animate({
+          scrollTop: topData.top
+      }, 'slow');
      });
-     return false;
-   });
-});
-
+  
+  
+     // Add Category Button
+     $("#add-new-category").hide();
+     $('#add-category-btn').click(function () {      
+       $("#add-new-category").slideToggle(function() {
+         $('#new_group').focus();
+       });
+       return false;
+     });
+  
+     $('#save-new-category-btn').click(function(event) {
+  
+         event.preventDefault();
+  
+         $.ajax({
+           url: '/categories',
+           method: 'post',
+           data: {
+             category: { name: $('#new-category').val() }
+           },
+           success: function(category){
+              // console.log(response);
+              if(category.id != null){
+                let newOption = $('<option/>')
+                .attr('value', category.id)
+                .attr('selected', true)
+                .text(category.name)
+  
+                $('#category_select').append(newOption);
+                $('#new-category').val('');
+              }
+           },
+           error: function(xhr){
+             let errors = xhr.responseJSON;
+           }
+  
+         });
+     });
+  
+  });
+  
+  
