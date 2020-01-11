@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post '/categories', to: 'categories#create'
+
   scope '/dashboard' do
     resources :contacts
   end 
