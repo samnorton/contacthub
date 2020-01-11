@@ -9,17 +9,13 @@
             </div>
             <div class="card-body">
               <div class="col-md-8 mx-auto">
-                <div class="container-avatar">
-                  <div class="avatar-upload">
-                    <div class="avatar-preview">
-                      <div id="imagePreview">
-                        <div id="imagePreview">
-                              <%= image_tag @contact.contact_avatar.attached? ? @contact.contact_avatar : "100x100.png" %>
+              <div class="wrap" id="avatar-container">
+                      <div class="valign-middle">
+                          <div class="form-group">
+                             <%= image_tag @contact.contact_avatar.attached? ? @contact.contact_avatar : "100x100.png", class: "img-responsve img-preview" %>
                         </div>
-                      </div>
-                    </div>
+                     </div>
                   </div>
-                </div>
                 <table class="table table-borderless">
                   <tr>
                     <th>Name:</th>
