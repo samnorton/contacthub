@@ -39,7 +39,8 @@
                                   <%= image_tag @contact.avatar, class: "img-responsve img-preview" %>
                                  <% end %>
                               <label for="file" class="sr-only">Choose Image</label>
-                              <input type="file" id="file">
+                               <%= f.file_field :contact_avatar, id: "file" %>
+                              
                           </div>
                       </div>
                   </div>
