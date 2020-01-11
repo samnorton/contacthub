@@ -67,7 +67,6 @@ $(document).on('turbolinks:load', function(){
   
          });
      });
-<<<<<<< HEAD
 
 
      $('input[type="file"]').each(function() {
@@ -102,8 +101,7 @@ $(document).on('turbolinks:load', function(){
       $(this).siblings('input[type="file"]').trigger('click');
   });
   
-=======
->>>>>>> 36f61cab7990b9fd65003a64e7c60ebc568db660
+
   
   });
   
