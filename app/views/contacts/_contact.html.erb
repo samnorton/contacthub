@@ -12,14 +12,17 @@
                       <h4 class="media-heading"><a data-target="#view-contact-modal" data-toggle="modal" href="#"><%= contact.name %></a></h4>
                       <address>
                         <strong><i class="fa fa-map-marker"></i> <%= contact.city %>, <%= contact.state %>, <%= contact.country %>, <%= contact.zip %> </strong><br>
-                        <i class="fa fa-envelope"></i> <%= contact.email %>| <i class="fa fa-mobile"></i> <%= contact.mobile %> | <i class="fa fa-phone"></i> <%= contact.phone %> 
+                        <i class="fa fa-envelope"></i> <%= contact.email %> | <i class="fa fa-mobile"></i> <%= contact.mobile %> | <i class="fa fa-phone"></i> <%= contact.phone %> 
                       </address>
                     </div>
                   </div>
                 </td>
                 <td class="middle" width="100">
                   <div class="mt-5">
-                    <a class="btn btn-outline-secondary btn-circle btn-xs" data-target="#edit-contact-modal" data-toggle="modal" href="#" title="Edit"><i class="fa fa-edit"></i></a> <a class="btn btn-outline-secondary btn-circle btn-xs" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                    <a class="btn btn-outline-secondary btn-circle btn-xs" data-target="#edit-contact-modal" data-toggle="modal" href="#" title="Edit"><i class="fa fa-edit"></i></a> 
+                     <%= link_to contact_path(contact), class: "btn btn-outline-secondary btn-circle btn-xs", data: {:confirm => 'Are you sure you want to delete this contact?'}, :method => :delete do %>
+                        <i class="fa fa-times"></i>
+                     <% end %>
                   </div>
                 </td>
               </tr>
