@@ -1,7 +1,7 @@
 
 
       <%= form_for(@contact, html: {multipart: true}) do |f| %>
-
+              
           <div class="card">
             <div class="card-header">
               <h2 class="display-5 main-text-blue text-center font-weight-bold"><%= @contact.new_record? ? 'Add New Contact' : 'Update Contact'%> </h2>
@@ -22,11 +22,7 @@
                 <div class="wrap" id="avatar-container">
                       <div class="valign-middle">
                           <div class="form-group">
-                              <% if @contact.new_record? %>
-                                 <%= image_tag "100x100.png", class: "img-responsve img-preview" %>
-                              <% else %>
-                                  <%= image_tag @contact.avatar, class: "img-responsve img-preview" %>
-                                 <% end %>
+                              <%= image_tag @contact.contact_avatar.attached? ? @contact.contact_avatar : "100x100.png", class: "img-responsve img-preview" %>
                               <label for="file" class="sr-only">Choose Image</label>
                                <%= f.file_field :contact_avatar, id: "file" %>
                           </div>
@@ -148,10 +144,10 @@
                 </div>
               </div>
             </div>
-            <div class="card-footer">
+            <div class="card-footer  text-center mx-auto">
                <%= f.submit @contact.new_record? ? "Save" : "Update", class: "btn btn-primary border-button mb-3 ml-3", id: "save-btn" %>
-               <a class="btn btn-outline-secondary border-button mt-n3" data-dismiss="modal" href="#" id="cancel-btn">Cancel</a>
-            </div>
+               <%= link_to "Cancel", contacts_path, class: "btn btn-outline-secondary border-button mt-n3", id: "cancel-btn" %>
+          </div>
           </div>
 
            <% end %>
