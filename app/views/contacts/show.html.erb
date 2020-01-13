@@ -48,6 +48,12 @@
                 </table>
               </div>
             </div>
+
+         <div class="card-footer text-center mx-auto">
+               <%= link_to "Update", edit_contact_path(@contact.id), class: "btn btn-primary border-button mb-3 ml-3", id: "save-btn" %>
+                <%= link_to "Cancel", contacts_path, class: "btn btn-outline-secondary border-button mt-n3", id: "cancel-btn" %>
+          </div>
+
           </div>
         </div>
       </div>
