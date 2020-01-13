@@ -19,7 +19,12 @@
                 </td>
                 <td class="middle" width="100">
                   <div class="mt-5">
-                    <a class="btn btn-outline-secondary btn-circle btn-xs" data-target="#edit-contact-modal" data-toggle="modal" href="#" title="Edit"><i class="fa fa-edit"></i></a> <a class="btn btn-outline-secondary btn-circle btn-xs" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                    
+                    <%= link_to edit_contact_path(contact), class: "btn btn-outline-secondary btn-circle btn-xs" do %>
+                       <i class="fa fa-edit"></i>
+                    <% end %>
+                    
+                    <a class="btn btn-outline-secondary btn-circle btn-xs" href="#" title="Delete"><i class="fa fa-times"></i></a>
                   </div>
                 </td>
               </tr>
