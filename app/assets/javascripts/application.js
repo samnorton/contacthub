@@ -47,7 +47,7 @@ $(document).on('turbolinks:load', function(){
            url: '/categories',
            method: 'post',
            data: {
-             category: { name: $('#new-category').val() }
+            category: { name: capitalizeFirstLetter($('#new-category').val()) }
            },
            success: function(category){
               // console.log(response);
@@ -66,6 +66,7 @@ $(document).on('turbolinks:load', function(){
            }
   
          });
+
      });
 
 
@@ -101,8 +102,11 @@ $(document).on('turbolinks:load', function(){
       $(this).siblings('input[type="file"]').trigger('click');
   });
   
-
-  
   });
-  
-  
+
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  }
+
+
