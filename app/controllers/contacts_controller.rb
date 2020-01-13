@@ -2,10 +2,11 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:category_id] && !params[:category_id].empty? 
-      @contacts = Category.find(params[:category_id]).contacts.order(created_at: :desc).page params[:page]
-    else 
-      @contacts = Contact.order(created_at: :desc).page params[:page]
+      if params[:category_id] && !params[:category_id].empty? 
+      category_find = Category.find(params[:category_id])
+      @contacts = category_find.contacts.search(params[:term]).order(created_at: :desc).page params[:page]
+      else 
+      @contacts = Contact.where('name LIKE ?', "%#{params[:term]}%").order(created_at: :desc).page params[:page]
     end
     
       @contact = Contact.new
