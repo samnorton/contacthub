@@ -355,6 +355,11 @@
     color: #fff;
   }
 
+  .img-thumbnail{
+    width: 100px;
+    height: 100px;
+  }
+
   .img-preview{
     width: 100px;
     height: 100px;
@@ -409,11 +414,10 @@
  }
 
   li.ui-menu-item{
-    padding: 15px 5px !important;
-    font-size: 1.1em  !important;;
+    padding: 3px 0px !important;
+    font-size: 1.2em  !important;;
 }
 
-  
   /* Media Queries */
   
   @media only screen and (max-width: 680px) {

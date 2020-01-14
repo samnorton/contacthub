@@ -5,7 +5,7 @@
                   <div class="media">
                     <div class="media-left">
                       <%= link_to contacts_path, ":data-target" => "#view-contact-modal", ":data-toggle" => "modal" do %>
-                          <%= image_tag "100x100.png", class: "media-object img-thumbnail img-rounded mr-3" %> 
+                          <%= image_tag contact.contact_avatar.attached? ? contact.contact_avatar : "100x100.png", class: "media-object img-thumbnail img-rounded mr-3" %>
                       <% end %>
                     </div>
                     <div class="media-body mt-2">
