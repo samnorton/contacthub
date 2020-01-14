@@ -17,6 +17,7 @@
 //= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
+//= require jquery-ui
 //= require_tree .
 
 $(document).on('turbolinks:load', function(){
@@ -102,6 +103,17 @@ $(document).on('turbolinks:load', function(){
       $(this).siblings('input[type="file"]').trigger('click');
   });
   
+
+    $('#term').autocomplete({
+      source: '/dashboard/contacts/autocomplete',
+      minLength: 3,
+      select: function(event, ui){
+        $('#term').val(ui.item.value);
+        $(this).closest('form').submit();
+      }
+    });
+
+
   });
 
 

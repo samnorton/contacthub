@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   post '/categories', to: 'categories#create'
 
   scope '/dashboard' do
-    resources :contacts
+    resources :contacts do
+      collection do
+        get 'autocomplete'
+      end
+    end
   end 
   
   root 'homepage#index'

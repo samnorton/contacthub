@@ -402,6 +402,17 @@
     vertical-align: middle;
     text-align: center;
   }
+
+ ul.ui-menu{
+   padding: 0px !important;
+   border: 1px solid red;
+ }
+
+  li.ui-menu-item{
+    padding: 15px 5px !important;
+    font-size: 1.1em  !important;;
+}
+
   
   /* Media Queries */
   

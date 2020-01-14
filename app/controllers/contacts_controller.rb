@@ -6,10 +6,21 @@ class ContactsController < ApplicationController
       category_find = Category.find(params[:category_id])
       @contacts = category_find.contacts.search(params[:term]).order(created_at: :desc).page params[:page]
       else 
-      @contacts = Contact.where('name LIKE ?', "%#{params[:term]}%").order(created_at: :desc).page params[:page]
+      @contacts = Contact.search(params[:term]).order(created_at: :desc).page params[:page]
     end
     
       @contact = Contact.new
+  end
+
+  def autocomplete
+    if params[:category_id] && !params[:category_id].empty? 
+      category_find = Category.find(params[:category_id])
+      @contacts = category_find.contacts.search(params[:term]).order(created_at: :desc).page params[:page]
+      render json: @contacts.map { |contact| { id: contact.id, value: contact.name }}
+    else 
+      @contacts = Contact.search(params[:term]).order(created_at: :desc).page params[:page]
+      render json: @contacts.map { |contact| { id: contact.id, value: contact.name }}
+    end
   end
 
   def show
