@@ -24,6 +24,7 @@ install postgress, create database and user with password to match the config fi
 - Database initialization
 
 bundle exec rails db:migrate
+bundle exec rails db:seed
 
 - How to run the test suite
 
