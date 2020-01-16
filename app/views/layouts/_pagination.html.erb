@@ -1,5 +1,5 @@
-            <div class="card-footer">
+            <div class="card-footer" id="paginator">
               <nav aria-label="Page Navigation">
-                 <%= paginate @contacts %>
+                 <%= paginate @contacts, remote: true%>
               </nav>
             </div>
