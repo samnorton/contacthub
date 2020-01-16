@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function(){
       }, 'slow');
      });
   
-  
+
      // Add Category Button
      $("#add-new-category").hide();
      $('#add-category-btn').click(function () {      
@@ -102,8 +102,9 @@ $(document).on('turbolinks:load', function(){
   $('.input-file .btn').click(function() {
       $(this).siblings('input[type="file"]').trigger('click');
   });
-  
 
+
+  $(function(){
     $('#term').autocomplete({
       source: '/dashboard/contacts/autocomplete',
       minLength: 3,
@@ -112,8 +113,9 @@ $(document).on('turbolinks:load', function(){
         $(this).closest('form').submit();
       }
     });
+  });
 
-
+  
   });
 
 
@@ -122,3 +124,11 @@ $(document).on('turbolinks:load', function(){
   }
 
 
+$(document).on('click', '.pagination a[data-remote=true], a.list-group-item', function(e){
+    history.pushState({}, '', $(this).attr('href'));
+});
+
+// when back button was click we will run the url that was click previously
+$(window).on('popstate', function(){
+   $.get(document.location.href);
+});

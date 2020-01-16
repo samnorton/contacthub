@@ -1,0 +1,4 @@
+$('#contacts').html('<%= escape_javascript render(@contact) %>');
+$('#paginator').html('<%= escape_javascript (paginate(@contacts, remote: true)) %>');
+$('#sidebar').html('<%= escape_javascript render("layouts/sidebar_nav") %>');
+$('#category_id').html('<%= params[:category_id] %>');
