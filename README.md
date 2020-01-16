@@ -5,20 +5,33 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+- Ruby version
 
-* System dependencies
+install ruby 2.6.x or use RVM
 
-* Configuration
+- System dependencies
 
-* Database creation
+install bundler and gem
 
-* Database initialization
+- Configuration
 
-* How to run the test suite
+bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+- Database creation
 
-* Deployment instructions
+install postgress, create database and user with password to match the config file
 
-* ...
+- Database initialization
+
+bundle exec rails db:migrate
+bundle exec rails db:seed
+
+- How to run the test suite
+
+bundle exec rails test
+
+- Services (job queues, cache servers, search engines, etc.)
+
+- Deployment instructions
+
+- ...
