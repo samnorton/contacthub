@@ -123,17 +123,6 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
-$(document).on('click', '.pagination a[data-remote=true], a.list-group-item', function (event) {
-  // if you set the remote:true this event will be nulll 
-  console.log(event);
-  event.preventDefault(); // this will stop the link from going anywhere
-  // here you can use axios to make an ajax request, and manually do the changes
-  // axios.get(`contacts/${e.target.value}`); // as an axios example
-
-  // the history will not be changed when a link's default action is going on, as it will cause a new document.load event to be triggered
-  // window.history.pushState('', '', $(this).attr('href'));
-});
-
 // when back button was click we will run the url that was click previously
 $(window).on('popstate', function () {
   $.get(document.location.href);
