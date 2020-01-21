@@ -42,6 +42,7 @@ class ContactsController < ApplicationController
         # format.json { render :show, status: :created, location: @contact }
         format.js
       else
+        #Todo: Handle this code block when there are errors, redirect to create modal so that errors are displayed over there
         format.html { render :new }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
         format.js
@@ -56,6 +57,7 @@ class ContactsController < ApplicationController
         # format.json { render :show, status: :ok, location: @contact }
         format.js
       else
+        #Todo: Replicate same logic implemented in create when there are errors
         format.html { render :edit }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
         format.js

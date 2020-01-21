@@ -152,6 +152,11 @@ address i.fa:hover {
   vertical-align: middle;
 }
 
+.fa-edit, .fa-times {
+  padding-bottom: 5px;
+  padding-left: 1px;
+}
+
 li.link-button {
   cursor: pointer !important;
   font-size: 1em;
