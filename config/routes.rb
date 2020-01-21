@@ -3,9 +3,7 @@ Rails.application.routes.draw do
 
   scope '/dashboard' do
     resources :contacts do
-      collection do
-        get 'autocomplete'
-      end
+        get 'autocomplete', on: :collection
     end
   end 
   
