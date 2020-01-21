@@ -22,7 +22,11 @@
                           <div class="form-group">
                               <%= image_tag @contact.contact_avatar.attached? ? @contact.contact_avatar : "100x100.png", class: "img-responsve img-preview" %>
                               <label for="file" class="sr-only">Choose Image</label>
-                               <%= f.file_field :contact_avatar, id: "file" %>
+                            <div class="input-file">
+                              <span class="btn"> Choose Image </span>
+                              <span class="file-selected"></span>
+                              <%= f.file_field :contact_avatar, id: "file" %>
+                            </div>
                           </div>
                       </div>
                   </div>
@@ -123,7 +127,7 @@
                 </div>
               </div>
 
-              <div class="form-group row" id="add-new-category">
+              <div class="form-group row hide" id="add-new-category">
                 <label class="col-lg-2 col-form-label" for="location">New Category:</label>
                 <div class="col-lg-10">
                   <div class="input-group">

@@ -1,2 +1,2 @@
 $('#new-contact-modal').modal('hide');
-$('table#contacts tbody').append("<%= j render @contact %>");
+$('#contacts').append("<%= j render 'contacts/contact_item', contact: @contact %>");

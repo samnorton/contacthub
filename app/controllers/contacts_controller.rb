@@ -1,15 +1,15 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:destroy]
 
   def index
-      if params[:category_id] && !params[:category_id].empty? 
+    if params[:category_id] && !params[:category_id].empty?
       category_find = Category.find(params[:category_id])
       @contacts = category_find.contacts.search(params[:term]).order(created_at: :desc).page params[:page]
-      else 
+    else
       @contacts = Contact.search(params[:term]).order(created_at: :desc).page params[:page]
     end
-    
-      @contact = Contact.new
+      # @contact = Contact.new
   end
 
   def autocomplete
@@ -38,8 +38,8 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
-        format.json { render :show, status: :created, location: @contact }
+        format.html { redirect_to contacts_path, notice: 'Contact was successfully created.' }
+        # format.json { render :show, status: :created, location: @contact }
         format.js
       else
         format.html { render :new }
@@ -52,8 +52,8 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
-        format.json { render :show, status: :ok, location: @contact }
+        format.html { redirect_to contacts_path, notice: 'Contact was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @contact }
         format.js
       else
         format.html { render :edit }

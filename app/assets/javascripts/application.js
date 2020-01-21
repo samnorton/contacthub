@@ -30,19 +30,21 @@ $(document).on('turbolinks:load', function () {
     }, 'slow');
   });
 
-
   // Add Category Button
-  $("#add-new-category").hide();
-  $('#add-category-btn').click(function () {
+  $(document).on('click', '#add-category-btn', function () {
     $("#add-new-category").slideToggle(function () {
-      $('#new_group').focus();
+      if ($('#add-new-category').hasClass('hide') == true) {
+        $('#add-new-category').addClass('flex').removeClass('hide');
+      }else {
+        $('#add-new-category').removeClass('flex').addClass('hide');
+      }
     });
     return false;
   });
 
-  $('#save-new-category-btn').click(function (event) {
-
-    event.preventDefault();
+  //Save new category while creating the form
+  $(document).on('click', '#save-new-category-btn', function(e) {
+    e.preventDefault();
 
     $.ajax({
       url: '/categories',
@@ -51,7 +53,6 @@ $(document).on('turbolinks:load', function () {
         category: { name: capitalizeFirstLetter($('#new-category').val()) }
       },
       success: function (category) {
-        // console.log(response);
         if (category.id != null) {
           let newOption = $('<option/>')
             .attr('value', category.id)
@@ -70,39 +71,45 @@ $(document).on('turbolinks:load', function () {
 
   });
 
+  //Open delete contact modal
+  $(document).on('click', '.delete-contact', function(){
+    $('#confirm-modal').modal('show');
+    contact_id = $('.delete-contact').data('id');
+  });
 
-  $('input[type="file"]').each(function () {
-    // get label text
-    var label = $(this).parents('.form-group').find('label').text();
-    label = (label) ? label : 'Upload File';
-
-    // wrap the file input
-    $(this).wrap('<div class="input-file"></div>');
-    // display label
-    $(this).before('<span class="btn">' + label + '</span>');
-    // we will display selected file here
-    $(this).before('<span class="file-selected"></span>');
-
-    // file input change listener 
-    $(this).change(function (e) {
-      // Get this file input value
-      var val = $(this).val();
-
-      // Let's only show filename.
-      // By default file input value is a fullpath, something like 
-      // C:\fakepath\Nuriootpa1.jpg depending on your browser.
-      var filename = val.replace(/^.*[\\\/]/, '');
-
-      // Display the filename
-      $(this).siblings('.file-selected').text(filename);
+  //Send AJAX request to delete specific record when user confirms the action
+  $(document).on('click', '.confirm-delete', function(){
+    $.ajax({
+      url: '/dashboard/contacts/' + contact_id,
+      method: 'delete',
+      data: {
+        contact: contact_id
+      },
+      success: function (category) {
+      },
+      error: function (xhr) {
+        let errors = xhr.responseJSON;
+      }
     });
   });
 
   // Open the file browser when our custom button is clicked.
-  $('.input-file .btn').click(function () {
+  $(document).on('click', '.input-file .btn', function () {
     $(this).siblings('input[type="file"]').trigger('click');
-  });
 
+    $('input[type="file"]').change(function (e) {
+      // Get this file input value
+      var val = $('input[type="file"]').val();
+
+      // Let's only show filename.
+      // By default file input value is a fullpath, something like
+      // C:\fakepath\Nuriootpa1.jpg depending on your browser.
+      var filename = val.replace(/^.*[\\\/]/, '');
+
+      // Display the filename
+      $('input[type="file"]').siblings('.file-selected').text(filename);
+    });
+  });
 
   $(function () {
     $('#term').autocomplete({
@@ -115,9 +122,7 @@ $(document).on('turbolinks:load', function () {
     });
   });
 
-
 });
-
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
