@@ -4,12 +4,12 @@
                 <td class="middle">
                   <div class="media">
                     <div class="media-left">
-                      <%= link_to contact_path(contact) do %>
+                      <%= link_to contact_path(contact), remote: true, ":data-toggle" => "modal", ":data-target" => "#show-contact-modal" do %>
                           <%= image_tag contact.contact_avatar.attached? ? contact.contact_avatar : "100x100.png", class: "media-object img-thumbnail img-rounded mr-3" %>
                       <% end %>
                     </div>
                     <div class="media-body mt-2">
-                    <%= link_to contact_path(contact) do %>
+                    <%= link_to contact_path(contact), remote: true, ":data-toggle" => "modal", ":data-target" => "#show-contact-modal" do %>
                       <h4 class="media-heading"><%= contact.name %></h4>
                     <% end %> 
                       <address>

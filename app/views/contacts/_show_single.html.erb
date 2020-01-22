@@ -1,0 +1,62 @@
+
+        <div class="card">
+        <div class="card-header">
+          <h2 class="display-5 main-text-blue text-center font-weight-bold">Contact Information</h2>
+        </div>
+        <div class="card-body">
+          <div class="col-md-8 mx-auto">
+          <div class="wrap" id="avatar-container">
+                  <div class="valign-middle">
+                      <div class="form-group">
+                         <%= image_tag @contact.contact_avatar.attached? ? @contact.contact_avatar : "100x100.png", class: "img-responsve img-preview" %>
+                    </div>
+                 </div>
+              </div>
+            <table class="table table-borderless">
+              <tr>
+                <th>Name:</th>
+                <td><%= @contact.name %></td>
+              </tr>
+              <tr>
+                <th>Email:</th>
+                <td><%= @contact.email %></td>
+              </tr>
+              <tr>
+                <th>Mobile</th>
+                <td><%= @contact.mobile %></td>
+              </tr>
+              <tr>
+                <th>Phone</th>
+                <td><%= @contact.phone %></td>
+              </tr>
+              <tr>
+                <th>Address:</th>
+                <td><%= @contact.address %>, <%= @contact.city %>, <%= @contact.state %>, <%= @contact.country %>, <%= @contact.zip %></td>
+              </tr>
+              <tr>
+                <th>Category:</th>
+                <td><%= @contact.category.name %></td>
+              </tr>
+              <tr>
+                <th>Notes:</th>
+                <td><%= @contact.note %></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+          <div class="card-footer text-center mx-auto">
+           
+
+           
+               <%= link_to "Update", edit_contact_path(@contact.id), class: "btn btn-primary border-button mb-3 ml-3", id: "save-btn" %>
+            
+            <% in_modal ||= false %>
+            <% if in_modal %>
+               <button type="button" class="btn btn-outline-secondary border-button mt-n3" data-dismiss="modal">Close</button>
+            <% else %>
+               <%= link_to "Go Back", contacts_path, class: "btn btn-outline-secondary border-button mt-n3", id: "cancel-btn"%>
+           <% end %>
+
+      </div>
+      </div>
