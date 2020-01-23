@@ -1,26 +1,44 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<!-- Form Start -->
+  <section class="form-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mx-auto center-box">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="display-5 main-text-blue text-center font-weight-bold">Login</h2>
+            </div>
+            <div class="card-body">
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                
+                <div class="form-group">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, class: "form-control", id: "email", placeholder: "Your Email.." %>
+                </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+                <div class="form-group">
+                    <%= f.label :password %><br />
+                    <%= f.password_field :password, class: "form-control", id: "password", placeholder: "Your Password.." %>
+                  </div>
+                  
+                  <% if devise_mapping.rememberable? %>
+                    <div class="field">
+                      <%= f.check_box :remember_me %>
+                      <%= f.label :remember_me %>
+                    </div>
+                <% end %>
+
+
+                  <%= f.submit "Log-in", class: "btn btn-primary btn-lg main-btn mb-2"%>
+                <% end %>
+
+              <p>Don't have an account yet? <ins><%= link_to "Register here", new_user_registration_path %></ins> <br/>
+              Don't remember your password? <ins><%= link_to "Reset password here", new_password_path('user') %></ins></p>
+              </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  </section>
+<!-- Form End -->
