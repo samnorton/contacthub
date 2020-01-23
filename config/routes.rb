@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   post '/categories', to: 'categories#create'
 
   scope '/dashboard' do
