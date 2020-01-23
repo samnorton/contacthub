@@ -73,7 +73,7 @@ $(document).on('turbolinks:load', function () {
 
   //Open delete contact modal
   $(document).on('click', '.delete-contact', function(){
-    $('#show-contact-modal').modal('show');
+    $('#delete-contact-modal').modal('show');
     contact_id = $('.delete-contact').data('id');
   });
 
