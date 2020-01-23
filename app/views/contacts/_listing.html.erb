@@ -1,0 +1,5 @@
+<table class="table" id="contacts">
+  <% contacts.each do |contact| %>
+    <%= render partial: 'contacts/contact_item', locals: {contact: contact} %>
+  <% end %>
+</table>

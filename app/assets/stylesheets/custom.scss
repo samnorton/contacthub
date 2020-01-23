@@ -152,6 +152,11 @@ address i.fa:hover {
   vertical-align: middle;
 }
 
+.fa-edit, .fa-times {
+  padding-bottom: 5px;
+  padding-left: 1px;
+}
+
 li.link-button {
   cursor: pointer !important;
   font-size: 1em;
@@ -184,7 +189,7 @@ li.link-button:hover {
   cursor: pointer !important;
   letter-spacing: 1px;
   transition: 0.5s;
-  color: #fff;
+  color: #fff !important;
   background-color: #007bff;
   border-radius: 50px;
   font-weight: 600;
@@ -413,6 +418,14 @@ ul.ui-menu {
 li.ui-menu-item {
   padding: 3px 0px !important;
   font-size: 1.2em !important;
+}
+
+.hide {
+  display: none;
+}
+
+.flex {
+  display: flex !important;
 }
 
 /* Media Queries */

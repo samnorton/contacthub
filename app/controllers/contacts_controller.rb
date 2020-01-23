@@ -1,15 +1,15 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:destroy]
 
   def index
-      if params[:category_id] && !params[:category_id].empty? 
+    if params[:category_id] && !params[:category_id].empty?
       category_find = Category.find(params[:category_id])
       @contacts = category_find.contacts.search(params[:term]).order(created_at: :desc).page params[:page]
-      else 
+    else
       @contacts = Contact.search(params[:term]).order(created_at: :desc).page params[:page]
     end
-    
-      @contact = Contact.new
+      # @contact = Contact.new
   end
 
   def autocomplete
@@ -34,32 +34,21 @@ class ContactsController < ApplicationController
   end
 
   def create
+    @success = false
     @contact = Contact.new(contact_params)
 
-    respond_to do |format|
-      if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
-        format.json { render :show, status: :created, location: @contact }
-        format.js
-      else
-        format.html { render :new }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-        format.js
-      end
+    if @contact.save
+      @success = true
+      redirect_to contacts_path, notice: 'Contact was successfully created.'
     end
   end
 
   def update
-    respond_to do |format|
-      if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
-        format.json { render :show, status: :ok, location: @contact }
-        format.js
-      else
-        format.html { render :edit }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-        format.js
-      end
+    @success = false
+
+    if @contact.update(contact_params)
+      @success = true
+      redirect_to contacts_path, notice: 'Contact was successfully updated.'
     end
   end
 
@@ -79,4 +68,16 @@ class ContactsController < ApplicationController
     def contact_params
       params.require(:contact).permit(:name, :email, :mobile, :phone, :country, :address, :city, :state, :zip, :note, :category_id, :contact_avatar)
     end
+
+    def has_error?(resource, field)
+      resource.errors.messages[field].present?
+    end
+
+    def get_error(resource, field)
+      msg = resource.errors.messages[field]
+      field.to_s.capitalize + " " + msg.join(' and ') + '.'
+    end
+
+    helper_method :has_error?
+    helper_method :get_error
 end
