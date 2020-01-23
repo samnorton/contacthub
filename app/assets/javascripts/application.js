@@ -111,6 +111,19 @@ $(document).on('turbolinks:load', function () {
     });
   });
 
+  $("#new-contact-modal").submit(function(e) {
+    e.preventDefault();
+
+    let formData = $('form').serializeArray();
+
+    $.ajax({
+      url: "/dashboard/contacts",
+      type: "POST",
+      data: formData,
+      success: function (formData) {}
+    });
+  });
+
   $(function () {
     $('#term').autocomplete({
       source: '/dashboard/contacts/autocomplete',

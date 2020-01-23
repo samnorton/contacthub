@@ -34,34 +34,21 @@ class ContactsController < ApplicationController
   end
 
   def create
+    @success = false
     @contact = Contact.new(contact_params)
 
-    respond_to do |format|
-      if @contact.save
-        format.html { redirect_to contacts_path, notice: 'Contact was successfully created.' }
-        # format.json { render :show, status: :created, location: @contact }
-        format.js
-      else
-        #Todo: Handle this code block when there are errors, redirect to create modal so that errors are displayed over there
-        format.html { render :new }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-        format.js
-      end
+    if @contact.save
+      @success = true
+      redirect_to contacts_path, notice: 'Contact was successfully created.'
     end
   end
 
   def update
-    respond_to do |format|
-      if @contact.update(contact_params)
-        format.html { redirect_to contacts_path, notice: 'Contact was successfully updated.' }
-        # format.json { render :show, status: :ok, location: @contact }
-        format.js
-      else
-        #Todo: Replicate same logic implemented in create when there are errors
-        format.html { render :edit }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-        format.js
-      end
+    @success = false
+
+    if @contact.update(contact_params)
+      @success = true
+      redirect_to contacts_path, notice: 'Contact was successfully updated.'
     end
   end
 
@@ -81,4 +68,16 @@ class ContactsController < ApplicationController
     def contact_params
       params.require(:contact).permit(:name, :email, :mobile, :phone, :country, :address, :city, :state, :zip, :note, :category_id, :contact_avatar)
     end
+
+    def has_error?(resource, field)
+      resource.errors.messages[field].present?
+    end
+
+    def get_error(resource, field)
+      msg = resource.errors.messages[field]
+      field.to_s.capitalize + " " + msg.join(' and ') + '.'
+    end
+
+    helper_method :has_error?
+    helper_method :get_error
 end
