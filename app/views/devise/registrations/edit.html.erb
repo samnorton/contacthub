@@ -19,9 +19,9 @@
               <div class="valign-middle">
                   <div class="form-group">
                         <div class="form-group">
-                        <%= image_tag resource.user_avatar ? resource.user_avatar : "100x100.png", class: "img-responsve img-preview" %>
+                        <%= image_tag resource.user_avatar.attached? ? resource.user_avatar : "100x100.png", class: "img-responsve img-preview" %>
                         <label for="file" class="sr-only">Choose Image</label>
-                         <%= f.file_field :contact_avatar, id: "file" %>
+                         <%= f.file_field :user_avatar, id: "file" %>
                   </div>
                   </div>
               </div>
@@ -46,13 +46,18 @@
 
 
               <div class="form-group">
-                 <%= f.label :password_confirmation %><br />
-                 <%= f.password_field :password_confirmation, class: "form-control", id: "password", placeholder: "Your Password.." %>
+                 <%= f.label :password %><br />
+                 <%= f.password_field :password, class: "form-control", id: "password", placeholder: "Your New Password.." %>
               </div>
 
               <div class="form-group">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, class: "form-control", id: "password", placeholder: "Confirm New Password.." %>
+           </div>
+
+              <div class="form-group">
                   <%= f.label :current_password %> 
-                  <%= f.password_field :current_password, class: "form-control", id: "verify_password", placeholder: "Verify Your Password.." %>
+                  <%= f.password_field :current_password, class: "form-control", id: "verify_password", placeholder: "Your Current Password.." %>
              
                   </div>
               
