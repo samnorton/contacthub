@@ -1,0 +1,31 @@
+
+<!-- Form Start -->
+  <section class="form-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mx-auto center-box">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="display-5 main-text-blue text-center font-weight-bold">Reset Password</h2>
+            </div>
+            <div class="card-body">
+
+            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+
+                <div class="form-group">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, class: "form-control", id: "email", placeholder: "Your Email.." %>
+                </div>
+
+                  <%= f.submit "Reset Password", class: "btn btn-primary btn-lg main-btn mb-2"%>
+                <% end %>
+
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Form End -->
+

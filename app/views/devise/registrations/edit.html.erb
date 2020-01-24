@@ -1,0 +1,74 @@
+
+<!-- Form Start -->
+<section class="form-box">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mx-auto center-box">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="display-5 main-text-blue text-center font-weight-bold">Edit Profile</h2>
+          </div>
+          <div class="card-body">
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+
+
+              <div class="form-group">
+              <div class="wrap" id="avatar-container">
+              <div class="valign-middle">
+                  <div class="form-group">
+                        <div class="form-group">
+                        <%= image_tag resource.user_avatar.attached? ? resource.user_avatar : "100x100.png", class: "img-responsve img-preview" %>
+                        <label for="file" class="sr-only">Choose Image</label>
+                         <%= f.file_field :user_avatar, id: "file" %>
+                  </div>
+                  </div>
+              </div>
+            </div>
+
+              </div>
+              <div class="form-group">
+                <%= f.label :name %><br />
+                <%= f.text_field :name, class: "form-control", id: "name", placeholder: "Your Name.." %>
+              </div>
+
+
+              <div class="form-group">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, class: "form-control", id: "email",  placeholder: "Your Email.." %>
+             </div>
+
+
+             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+             <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+
+
+              <div class="form-group">
+                 <%= f.label :password %><br />
+                 <%= f.password_field :password, class: "form-control", id: "password", placeholder: "Your New Password.." %>
+              </div>
+
+              <div class="form-group">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, class: "form-control", id: "password", placeholder: "Confirm New Password.." %>
+           </div>
+
+              <div class="form-group">
+                  <%= f.label :current_password %> 
+                  <%= f.password_field :current_password, class: "form-control", id: "verify_password", placeholder: "Your Current Password.." %>
+             
+                  </div>
+              
+              <%= f.submit "Update Profile", class: "btn btn-primary btn-lg main-btn mb-2" %>
+              <% end %>
+            
+              <p><%= button_to "Cancel my account", registration_path('user'), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary btn-lg main-btn mb-2" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Form End -->
