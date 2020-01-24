@@ -34,21 +34,29 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @success = false
     @contact = Contact.new(contact_params)
+    @success = @contact.save ? true : false
 
-    if @contact.save
-      @success = true
-      redirect_to contacts_path, notice: 'Contact was successfully created.'
+    respond_to do |format|
+      if @success
+        format.html { redirect_to contacts_path, notice: 'Contact was successfully created.' }
+        format.js
+      else
+        format.js
+      end
     end
   end
 
   def update
-    @success = false
+    @success = @contact.update(contact_params) ? true : false
 
-    if @contact.update(contact_params)
-      @success = true
-      redirect_to contacts_path, notice: 'Contact was successfully updated.'
+    respond_to do |format|
+      if @success
+        format.html { redirect_to contacts_path, notice: 'Contact was successfully updated.' }
+        format.js
+      else
+        format.js
+      end
     end
   end
 
