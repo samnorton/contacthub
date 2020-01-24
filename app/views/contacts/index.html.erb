@@ -17,7 +17,6 @@
                   <span><i class="fa fa-plus white"></i> Add New</span>
                 <% end %>
               </div>
-
              </span>
             </div>
             <%= render partial: 'contacts/listing', locals: {contacts: @contacts} %>
@@ -29,20 +28,11 @@
   </section>
 <!-- Main Content End -->
 
-<!-- Modal -->
-<div class="modal fade" id="new-contact-modal" tabindex="-1" role="dialog" aria-labelledby="new-contact-modal" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-body" id="modal-body">
-         
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- Delete Confirm Modal -->
-<div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="confirm-modal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+
+<!-- Show Contact Modal -->
+<div class="modal fade" id="show-contact-modal" tabindex="-1" role="dialog" aria-labelledby="show-contact-modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Delete Confirmation</h5>
@@ -61,3 +51,4 @@
     </div>
   </div>
 </div>
+<!-- Show Contact Modal -->

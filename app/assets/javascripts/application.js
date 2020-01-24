@@ -73,7 +73,7 @@ $(document).on('turbolinks:load', function () {
 
   //Open delete contact modal
   $(document).on('click', '.delete-contact', function(){
-    $('#confirm-modal').modal('show');
+    $('#show-contact-modal').modal('show');
     contact_id = $('.delete-contact').data('id');
   });
 
@@ -108,6 +108,19 @@ $(document).on('turbolinks:load', function () {
 
       // Display the filename
       $('input[type="file"]').siblings('.file-selected').text(filename);
+    });
+  });
+
+  $("#new-contact-modal").submit(function(e) {
+    e.preventDefault();
+
+    let formData = $('form').serializeArray();
+
+    $.ajax({
+      url: "/dashboard/contacts",
+      type: "POST",
+      data: formData,
+      success: function (formData) {}
     });
   });
 
