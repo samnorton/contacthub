@@ -1,4 +1,5 @@
-$('#contacts').html('<%= j render(@contact) %>');
+$('#contacts').html('<%= j render(:partial => 'contacts/listing', contacts: @contacts) %>');
+
 $('#paginator').html('<%= j (paginate(@contacts)) %>');
 $('#sidebar').html('<%= j render("layouts/sidebar_nav") %>');
 $('#category_id').html('<%= params[:category_id] %>');

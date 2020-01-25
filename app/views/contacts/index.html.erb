@@ -13,13 +13,13 @@
             <div class="card-header">
               <strong class="float-left mt-1">Contact List</strong> <span>
               
-              <%= link_to new_contact_path, class: "btn btn-primary border-button float-right", ":data-target" => "#new-contact-modal", ":data-toggle" => "modal" do %>
+              <%= link_to new_contact_path, class: "btn btn-primary border-button float-right", ":data-target" => "#new-contact-modal", ":data-toggle" => "modal", remote: true do %>
                    <span><i class="fa fa-plus white"></i> Add New</span>
                <% end %>
 
              </span>
             </div>
-            <%= render @contact %>
+            <%= render partial: 'contacts/listing', locals: {contacts: @contacts} %>
             <%= render 'layouts/pagination' %>
           </div>
         </div>
@@ -28,6 +28,19 @@
   </section>
 <!-- Main Content End -->
 
+
+
+<!-- New Contact Modal -->
+<div class="modal fade" id="new-contact-modal" tabindex="-1" role="dialog" aria-labelledby="new-contact-modal" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body" id="modal-body">
+         
+      </div>
+    </div>
+  </div>
+</div>
+<!-- New Contact Modal -->
 
 
 <!-- Show Contact Modal -->
