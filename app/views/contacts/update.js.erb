@@ -1,0 +1,13 @@
+<% if @success %>
+  $('#new-contact-modal').modal('hide');
+  $('#contacts').prepend("<%= j render 'contacts/contact_item', contact: @contact %>");
+<% else %>
+  $(".errors").removeClass('hide');
+  <% @contact.errors.messages.each do |record| %>
+    <% key = record.first %>
+    var html = "<%= j get_error(@contact, key) %>";
+    $(".error-<%= key.to_s %>").html(html);
+  <% end %>
+
+  $('#save-btn').removeAttr("disabled");
+<% end %>
