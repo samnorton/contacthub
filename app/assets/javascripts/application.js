@@ -71,10 +71,11 @@ $(document).on('turbolinks:load', function () {
 
   });
 
+
   //Open delete contact modal
   $(document).on('click', '.delete-contact', function(){
     $('#confirm-modal').modal('show');
-    contact_id = $('.delete-contact').data('id');
+    contact_id = $(this).data('id');
   });
 
   //Send AJAX request to delete specific record when user confirms the action
