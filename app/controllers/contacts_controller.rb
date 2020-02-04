@@ -1,12 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-<<<<<<< HEAD
-  before_action :authenticate_user!
   skip_before_action :verify_authenticity_token, only: [:destroy]
-
-=======
-  skip_before_action :verify_authenticity_token, only: [:destroy]
->>>>>>> b8a518a8135880dc0cdc42f13d30dc6f88dfd51d
 
   def index
     if params[:category_id] && !params[:category_id].empty?
@@ -15,7 +9,6 @@ class ContactsController < ApplicationController
     else
       @contacts = Contact.search(params[:term]).order(created_at: :desc).page params[:page]
     end
-      # @contact = Contact.new
   end
 
   def autocomplete
@@ -48,14 +41,9 @@ class ContactsController < ApplicationController
         format.html { redirect_to contacts_path, notice: 'Contact was successfully created.' }
         format.js
       else
-<<<<<<< HEAD
-        format.html { render :new }
-=======
->>>>>>> b8a518a8135880dc0cdc42f13d30dc6f88dfd51d
         format.js
       end
     end
-
   end
 
   def update
@@ -80,6 +68,7 @@ class ContactsController < ApplicationController
   end
 
   private
+  
     def set_contact
       @contact = Contact.find(params[:id])
     end

@@ -1,10 +1,7 @@
 <% if @success %>
   $('#new-contact-modal').modal('hide');
-<<<<<<< HEAD
   $('#contacts').prepend("<%= j render 'contacts/contact_item', contact: @contact %>");
-=======
-  $('#contacts').append("<%= j render 'contacts/contact_item', contact: @contact %>");
->>>>>>> b8a518a8135880dc0cdc42f13d30dc6f88dfd51d
+  toastr.info('Contact was successfully updated.', 'info')
 <% else %>
   $(".errors").removeClass('hide');
   <% @contact.errors.messages.each do |record| %>
@@ -14,4 +11,6 @@
   <% end %>
 
   $('#save-btn').removeAttr("disabled");
+  
 <% end %>
+

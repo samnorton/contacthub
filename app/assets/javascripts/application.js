@@ -18,6 +18,7 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery-ui
+//= require toastr
 //= require_tree .
 
 $(document).on('turbolinks:load', function () {
@@ -29,6 +30,26 @@ $(document).on('turbolinks:load', function () {
       scrollTop: topData.top
     }, 'slow');
   });
+
+
+ // Toastr Notification
+ toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": true,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
 
 
 // Add active-menu class on sliding menus
@@ -81,13 +102,11 @@ $('a.js-nav[data-id="' + link.replace('#', '') + '"]').addClass('active-menu');
 
     });
 
+   
+
   });
 
-  //Open delete contact modal
-  $(document).on('click', '.delete-contact', function(){
-    $('#show-contact-modal').modal('show');
-    contact_id = $('.delete-contact').data('id');
-  });
+
 
   //Open delete contact modal
   $(document).on('click', '.delete-contact', function(){
@@ -159,5 +178,6 @@ function capitalizeFirstLetter(string) {
 $(window).on('popstate', function () {
   $.get(document.location.href);
 });
+
 
 
