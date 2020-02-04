@@ -2,14 +2,22 @@
   <td class="middle">
     <div class="media">
       <div class="media-left">
+<<<<<<< HEAD
         <%= link_to contact_path(contact), ":data-target" => "#show-contact-modal", ":data-toggle" => "modal", remote: true do %>
+=======
+        <%= link_to contacts_path, ":data-target" => "#view-contact-modal", ":data-toggle" => "modal" do %>
+>>>>>>> b8a518a8135880dc0cdc42f13d30dc6f88dfd51d
             <%= image_tag contact.contact_avatar.attached? ? contact.contact_avatar : "100x100.png", class: "media-object img-thumbnail img-rounded mr-3" %>
         <% end %>
       </div>
       <div class="media-body mt-2">
+<<<<<<< HEAD
         <%= link_to contact_path(contact), ":data-target" => "#show-contact-modal", ":data-toggle" => "modal", remote: true do %>
              <h4 class="media-heading"><%= contact.name %></h4>
         <% end %>
+=======
+        <h4 class="media-heading"><a data-target="#view-contact-modal" data-toggle="modal" href="#"><%= contact.name %></a></h4>
+>>>>>>> b8a518a8135880dc0cdc42f13d30dc6f88dfd51d
         <address>
           <strong><i class="fa fa-map-marker"></i> <%= contact.city %>, <%= contact.state %>, <%= contact.country %>, <%= contact.zip %> </strong><br>
           <i class="fa fa-envelope"></i> <%= contact.email %> | <i class="fa fa-mobile"></i> <%= contact.mobile %> | <i class="fa fa-phone"></i> <%= contact.phone %>
@@ -19,7 +27,11 @@
   </td>
   <td class="middle" width="100">
     <div class="mt-5">
+<<<<<<< HEAD
     <%= link_to edit_contact_path(contact), class: "btn btn-outline-secondary btn-circle btn-xs", ":data-target" => "#new-contact-modal", ":data-toggle" => "modal", remote: true do %>
+=======
+      <%= link_to edit_contact_path(contact), class: "btn btn-outline-secondary btn-circle btn-xs", ":data-target" => "#edit-contact-modal", ":data-toggle" => "modal", remote: true do %>
+>>>>>>> b8a518a8135880dc0cdc42f13d30dc6f88dfd51d
           <i class="fa fa-edit"></i>
       <% end %>
 

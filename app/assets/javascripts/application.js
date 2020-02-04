@@ -83,6 +83,11 @@ $('a.js-nav[data-id="' + link.replace('#', '') + '"]').addClass('active-menu');
 
   });
 
+  //Open delete contact modal
+  $(document).on('click', '.delete-contact', function(){
+    $('#show-contact-modal').modal('show');
+    contact_id = $('.delete-contact').data('id');
+  });
 
   //Open delete contact modal
   $(document).on('click', '.delete-contact', function(){

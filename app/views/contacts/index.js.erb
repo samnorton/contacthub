@@ -1,5 +1,10 @@
 $('#contacts').html('<%= j render(:partial => 'contacts/listing', contacts: @contacts) %>');
 
+<<<<<<< HEAD
 $('#paginator').html('<%= j (paginate(@contacts)) %>');
 $('#sidebar').html('<%= j render("layouts/sidebar_nav") %>');
+=======
+$('#paginator').html('<%= escape_javascript (paginate(@contacts)) %>');
+$('#sidebar').html('<%= escape_javascript render("layouts/sidebar_nav") %>');
+>>>>>>> b8a518a8135880dc0cdc42f13d30dc6f88dfd51d
 $('#category_id').html('<%= params[:category_id] %>');
