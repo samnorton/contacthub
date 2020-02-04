@@ -30,6 +30,18 @@ $(document).on('turbolinks:load', function () {
     }, 'slow');
   });
 
+
+// Add active-menu class on sliding menus
+var url = window.location.href;
+var link = window.location.hash
+$('a.js-nav.active-menu').removeClass('active-menu');
+if(link == ''){
+  $('a.js-nav[data-id="home"]').addClass('active-menu');
+} 
+$('a.js-nav[data-id="' + link.replace('#', '') + '"]').addClass('active-menu'); 
+
+
+
   // Add Category Button
   $(document).on('click', '#add-category-btn', function () {
     $("#add-new-category").slideToggle(function () {
@@ -123,7 +135,16 @@ $(document).on('turbolinks:load', function () {
     });
   });
 
+
+
+
+
+
+
+
 });
+
+
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
@@ -133,3 +154,5 @@ function capitalizeFirstLetter(string) {
 $(window).on('popstate', function () {
   $.get(document.location.href);
 });
+
+

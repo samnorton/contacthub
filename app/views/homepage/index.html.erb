@@ -5,7 +5,8 @@
       <div class="row">
         <div class="col-lg-5 pl-5">
           <h1 class="display-4 main-text-white">Manage Your Contacts Online</h1>
-          <p class="lead sub-text-white">We provide seemless ways to manage your contacts. Keeping them on file and accessible online.</p><a class="btn btn-primary btn-lg main-btn" href="register.html" id="get-started" type="button">Get Started</a>
+          <p class="lead sub-text-white">We provide seemless ways to manage your contacts. Keeping them on file and accessible online.</p>
+          <%= link_to "Get Starter", new_user_registration_path, class: "btn btn-primary btn-lg main-btn", id: "get-started" %>
         </div>
         <div class="offset-lg-1 col-lg-6"> <%= image_tag "intro-img.svg", class: "img-fluid" %> </div>
       </div>

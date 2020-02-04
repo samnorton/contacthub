@@ -11,13 +11,18 @@
           <div class="card-body">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
+
               <div class="form-group">
               <div class="wrap" id="avatar-container">
               <div class="valign-middle">
                   <div class="form-group">
-                      <%= image_tag "100x100.png", class: "img-responsve img-preview" %>
-                      <label for="file" class="sr-only">Choose Image</label>
-                       <%= f.file_field :user_avatar, id: "file" %>
+                  <%= image_tag "100x100.png", class: "img-responsve img-preview" %>
+                  <label for="file" class="sr-only">Choose Image</label>
+                  <div class="input-file">
+                    <span class="btn"> Choose Image </span>
+                    <span class="file-selected"></span>
+                    <%= f.file_field :user_avatar, id: "file" %>
+                  </div>
                   </div>
               </div>
             </div>

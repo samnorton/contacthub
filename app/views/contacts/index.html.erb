@@ -19,8 +19,14 @@
 
              </span>
             </div>
-            <%= render partial: 'contacts/listing', locals: {contacts: @contacts} %>
-            <%= render 'layouts/pagination' %>
+            <% if @contacts.blank? %>
+               <div class="alert alert-danger">
+                  <h5 class="text-center mt-2"><i class="fa fa-exclamation-triangle text-danger"></i> No record found. </h5>
+              </div>
+            <% end %>
+                <%= render partial: 'contacts/listing', locals: {contacts: @contacts} %>
+                <%= render 'layouts/pagination' %>
+            
           </div>
         </div>
       </div>

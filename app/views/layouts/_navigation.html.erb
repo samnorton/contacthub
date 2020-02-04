@@ -9,13 +9,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                  <%= link_to "Home", root_path(:anchor => 'home'), class: "nav-link", :"data-id" => "home" %>
+                  <%= link_to "Home", root_path(:anchor => 'home'), class: "nav-link js-nav", :"data-id" => "home" %>
+                  
                 </li>
                 <li class="nav-item">
-                  <%= link_to "About", root_path(:anchor => 'about'), class: "nav-link", :"data-id" => "about" %>
+                  <%= link_to "About", root_path(:anchor => 'about'), class: "nav-link js-nav", :"data-id" => "about" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "Testimonials", root_path(:anchor => 'testimonials'), class: "nav-link", :"data-id" => "testimonials" %>
+                  <%= link_to "Testimonials", root_path(:anchor => 'testimonials'), class: "nav-link js-nav", :"data-id" => "testimonials" %>
                 </li>
 
                <% if user_signed_in? %>
@@ -23,8 +24,8 @@
                   <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">My Account</a>
                   <div aria-labelledby="navbarDropdown" class="dropdown-menu">
 
-                    <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "dropdown-item" %>
-                    <%= link_to "My Contacts", contacts_path, class: "dropdown-item" %>
+                    <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "dropdown-item #{active_class_white(edit_user_registration_path(current_user))}" %>
+                    <%= link_to "My Contacts", contacts_path, class: "dropdown-item #{active_class_white('/dashboard/contacts')}" %>
                     <div class="dropdown-divider"></div>
                     <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
                   </div>
@@ -43,3 +44,4 @@
     </div>
   </header>
 <!-- Navigation End -->
+

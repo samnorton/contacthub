@@ -110,6 +110,15 @@ section#big-hero {
   color: #fff;
 }
 
+.active-menu{
+  color: var(--main-btn-bg-color) !important;
+}
+
+.active-menu-white{
+  color: #fff !important;
+  background-color: var(--main-btn-bg-color) !important;
+}
+
 /* Sections */
 
 .icon-box {
