@@ -24,8 +24,8 @@ default: &default
 development:
   <<: *default
   database: contacthub_development
-  username: cooperative
-  password: cc
+  username: sam
+  password: grace0512
   host: localhost
   port: 5432
 
