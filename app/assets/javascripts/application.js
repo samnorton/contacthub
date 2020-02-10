@@ -56,9 +56,6 @@ $(document).on('turbolinks:load', function () {
 var url = window.location.href;
 var link = window.location.hash
 $('a.js-nav.active-menu').removeClass('active-menu');
-if(link == ''){
-  $('a.js-nav[data-id="home"]').addClass('active-menu');
-} 
 $('a.js-nav[data-id="' + link.replace('#', '') + '"]').addClass('active-menu'); 
 
 

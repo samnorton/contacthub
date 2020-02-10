@@ -83,7 +83,7 @@
       <div class="form-group row category-mt">
         <%= f.label :category, class: "col-lg-2 col-form-label" %>
         <div class="col-lg-5">
-          <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Select Category" }, id: "category_select", class: "form-control #{'is-invalid' if has_error?(@contact, :category) }" %>
+          <%= f.collection_select :category_id, current_user.categories.all, :id, :name, { prompt: "Select Category" }, id: "category_select", class: "form-control #{'is-invalid' if has_error?(@contact, :category) }" %>
           <span class="text-danger error-category"></span>
         </div>
         <div class="col-lg-3">

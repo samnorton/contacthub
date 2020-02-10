@@ -8,12 +8,21 @@
 
 Contact.destroy_all
 Category.destroy_all
+User.destroy_all
 
-category_ids = []
+user_ids = []
 
-category_ids << Category.create(name: "Family").id 
-category_ids << Category.create(name: "Work").id 
-category_ids << Category.create(name: "Church").id 
+user_ids << User.create(name: 'Nick Carter', email: 'nickcarter@gmail.com', password: 'grace0512').id
+user_ids << User.create(name: 'Joel Thomson', email: 'joelthomson@gmail.com', password: 'grace0512').id
+
+p "2 users created."
+
+category_ids = { user_ids[0] => [], user_ids[1] => [] }
+
+category_ids[user_ids[0]] << Category.create(name: "Family", user_id: user_ids[0]).id 
+category_ids[user_ids[0]] << Category.create(name: "Work", user_id: user_ids[0]).id 
+category_ids[user_ids[1]]<< Category.create(name: "Church", user_id: user_ids[1]).id 
+category_ids[user_ids[1]]<< Category.create(name: "Friends", user_id: user_ids[1]).id 
 
 p "#{category_ids.count} categories created."
 
@@ -21,7 +30,9 @@ categories_count = category_ids.length
 
 contacts = []
 
-19.times do |i|
+100.times do |i|
+  user_id = user_ids[Random.rand(0...2)]
+
   new_contact = {
       name: Faker::Name.name,
       email: Faker::Internet.email,
@@ -33,7 +44,8 @@ contacts = []
       state: Faker::Address.state,
       zip: Faker::Address.zip,
       note: Faker::Quote.matz,
-      category_id: category_ids[Random.rand(0...categories_count)]
+      category_id: category_ids[user_id][Random.rand(0...categories_count)],
+      user_id: user_id
   }
 
   contacts.push(new_contact);
