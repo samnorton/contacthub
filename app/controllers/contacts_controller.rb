@@ -1,25 +1,19 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token, only: [:destroy]
+  before_action :authenticate_user!
 
   def index
-    if params[:category_id] && !params[:category_id].empty?
-      category_find = Category.find(params[:category_id])
-      @contacts = category_find.contacts.search(params[:term]).order(created_at: :desc).page params[:page]
-    else
-      @contacts = Contact.search(params[:term]).order(created_at: :desc).page params[:page]
-    end
+    @contacts = current_user.contacts.order(created_at: :desc).page(params[:page])
+    @contacts = @contacts.where(category_id: params[:category_id]) if params[:category_id].present?
+    @contacts = @contacts.search(params[:term]) if params[:term].present?
   end
 
   def autocomplete
-    if params[:category_id] && !params[:category_id].empty? 
-      category_find = Category.find(params[:category_id])
-      @contacts = category_find.contacts.search(params[:term]).order(created_at: :desc).page params[:page]
+      @contacts = current_user.contacts.order(created_at: :desc).page(params[:page])
+      @contacts = @contacts.where(category_id: params[:category_id]) if params[:category_id].present?
+      @contacts = @contacts.search(params[:term]) if params[:term].present?
       render json: @contacts.map { |contact| { id: contact.id, value: contact.name }}
-    else 
-      @contacts = Contact.search(params[:term]).order(created_at: :desc).page params[:page]
-      render json: @contacts.map { |contact| { id: contact.id, value: contact.name }}
-    end
   end
 
   def show
@@ -30,10 +24,11 @@ class ContactsController < ApplicationController
   end
 
   def edit
+    authorize @contact
   end
 
   def create
-    @contact = Contact.new(contact_params)
+    @contact = current_user.contacts.build.(contact_params)
     @success = @contact.save ? true : false
 
     respond_to do |format|
@@ -60,6 +55,7 @@ class ContactsController < ApplicationController
   end
 
   def destroy
+    authorize @contact
     @contact.destroy
     respond_to do |format|
       format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }

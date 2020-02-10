@@ -1,5 +1,6 @@
 class Contact < ApplicationRecord
   belongs_to :category
+  belongs_to :user
   has_one_attached :contact_avatar
 
   validates :name, :email, presence: true
