@@ -28,7 +28,7 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = current_user.contacts.build.(contact_params)
+    @contact = current_user.contacts.build(contact_params)
     @success = @contact.save ? true : false
 
     respond_to do |format|

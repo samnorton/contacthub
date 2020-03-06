@@ -1,6 +1,6 @@
 <% if @success %>
-  $('#new-contact-modal').modal('hide');
-  $('#contacts').prepend("<%= j render 'contacts/contact_item', contact: @contact %>");
+  $('#new-contact-modal').modal('hide')
+  $("tr#contact_item_<%= @contact.id %>").html("<%= j render 'contacts/contact_item', contact: @contact %>");
   toastr.info('Contact was successfully updated.', 'info')
 <% else %>
   $(".errors").removeClass('hide');
