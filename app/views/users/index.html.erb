@@ -28,8 +28,8 @@
       <td><%= user.name %></td>
       <td><%= user.email %></td>
       <td>
-        <button class="btn btn-primary btn-user">Edit</button>
-        <button class="btn btn-primary btn-user">Delete</button>
+        <%= link_to 'Edit', edit_user_path(user), class: "btn btn-primary btn-user" %>
+        <%= link_to 'Delete', user, method: :delete, data: { confirm: "Are you sure you want to delete user?"}, class: "btn btn-primary btn-user" %>
       </td>
     </tr>
   
