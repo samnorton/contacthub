@@ -9,6 +9,12 @@ class UsersController < ApplicationController
    end
 
    def update
+       if @user.update(user_params)
+          flash[:notice] = "User successfully updated."
+          redirect_to users_path
+       else 
+          render 'edit'
+       end 
    end
 
    def destroy
