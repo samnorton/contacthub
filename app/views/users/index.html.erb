@@ -1,46 +1,44 @@
+<section class="form-contact">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9 mx-auto center-box">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="display-5 main-text-blue text-center font-weight-bold">Users List</h2>
+        </div>
+        <div class="card-body">
 
-  <section class="form-contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-9 mx-auto center-box">
-          <div class="card">
-            <div class="card-header">
-              <h2 class="display-5 main-text-blue text-center font-weight-bold">Users List</h2>
-            </div>
-            <div class="card-body">
-  
 
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-       <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
+<thead>
+<tr>
+  <th scope="col">Id</th>
+  <th scope="col">Name</th>
+  <th scope="col">Email</th>
+   <th scope="col">Action</th>
+</tr>
+</thead>
+<tbody>
 
-  <% @users.each do |user| %>
-
-    <tr>
-      <th scope="row"><%= user.id %></th> 
-      <td><%= user.name %></td>
-      <td><%= user.email %></td>
-      <td>
-        <%= link_to 'Edit', edit_user_path(user), class: "btn btn-primary btn-user" %>
-        <%= link_to 'Delete', user, method: :delete, data: { confirm: "Are you sure you want to delete user?"}, class: "btn btn-primary btn-user" %>
-      </td>
-    </tr>
-  
-    <% end %>
-  </tbody>
+<% @users.each do |user| %>
+<% unless current_user.id == user.id %>
+<tr>
+  <th scope="row"><%= user.id %></th> 
+  <td><%= user.name %></td>
+  <td><%= user.email %></td>
+  <td>
+    <%= link_to 'Delete', user, method: :delete, data: { confirm: "Are you sure you want to delete user?"}, class: "btn btn-primary btn-user" %>
+  </td>
+</tr>
+<% end %>
+<% end %>
+</tbody>
 </table>
 
-            </div>
-
-          </div>
         </div>
+
       </div>
     </div>
-  </section>
+  </div>
+</div>
+</section>

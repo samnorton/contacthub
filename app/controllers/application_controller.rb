@@ -24,11 +24,13 @@ class ApplicationController < ActionController::Base
     private
 
     def user_not_authorized
-      flash[:danger] = "You are not authorized to perform this action."
-      redirect_to action: :index
+      respond_to do |format|
+          format.html { redirect_to contacts_path, notice: 'You are not authorized to visit this page.' }
+          format.js
+      end
     end 
 
     def show_404
-      render template: "errors/404", status: 404
+      render '404.html', status: 404
     end 
 end

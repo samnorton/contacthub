@@ -3,3 +3,7 @@ $('#contacts').html('<%= j render(:partial => 'contacts/listing', contacts: @con
 $('#paginator').html('<%= escape_javascript (paginate(@contacts)) %>');
 $('#sidebar').html('<%= escape_javascript render("layouts/sidebar_nav") %>');
 $('#category_id').html('<%= params[:category_id] %>');
+
+<% if @user_not_authorized %>
+  toastr.info('Contact was successfully updated.', 'info')
+<% end %> 

@@ -1,48 +1,53 @@
 
 <!-- Navigation Start -->
-  <header id="home">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <nav class="navbar navbar-expand-lg">
-            <%= link_to "", root_path, class: "navbar-brand" %>
-             <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                  <%= link_to "Home", root_path(:anchor => 'home'), class: "nav-link js-nav", :"data-id" => "home" %>
+<header id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <nav class="navbar navbar-expand-lg">
+          <%= link_to "", root_path, class: "navbar-brand" %>
+           <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <%= link_to "Home", root_path(:anchor => 'home'), class: "nav-link js-nav", :"data-id" => "home" %>
+                
+              </li>
+              <li class="nav-item">
+                <%= link_to "About", root_path(:anchor => 'about'), class: "nav-link js-nav", :"data-id" => "about" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Testimonials", root_path(:anchor => 'testimonials'), class: "nav-link js-nav", :"data-id" => "testimonials" %>
+              </li>
+
+             <% if user_signed_in? %>
+              <li class="nav-item dropdown">
+                <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">My Account</a>
+                <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+
+                  <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "dropdown-item #{active_class_white(edit_user_registration_path(current_user))}" %>
+                  <%= link_to "My Contacts", contacts_path, class: "dropdown-item #{active_class_white('/dashboard/contacts')}" %>
                   
-                </li>
-                <li class="nav-item">
-                  <%= link_to "About", root_path(:anchor => 'about'), class: "nav-link js-nav", :"data-id" => "about" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Testimonials", root_path(:anchor => 'testimonials'), class: "nav-link js-nav", :"data-id" => "testimonials" %>
-                </li>
+                  <% if current_user.admin === true %>
+                      <%= link_to "Users List", users_path, class: "dropdown-item #{active_class_white('/dashboard/users')}" %>
+                  <% end %>
 
-               <% if user_signed_in? %>
-                <li class="nav-item dropdown">
-                  <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">My Account</a>
-                  <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                  <div class="dropdown-divider"></div>
+                  <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
+                </div>
+              </li>
 
-                    <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "dropdown-item #{active_class_white(edit_user_registration_path(current_user))}" %>
-                    <%= link_to "My Contacts", contacts_path, class: "dropdown-item #{active_class_white('/dashboard/contacts')}" %>
-                    <div class="dropdown-divider"></div>
-                    <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
-                  </div>
-                </li>
-
-              <% else %>
-                <li class="nav-item link-button" id="login-link">
-                  <%= link_to "Login", user_session_path, class: "nav-link" %>
-                </li>s
-               <% end %>
-              </ul>
-            </div>
-          </nav>
-        </div>
+            <% else %>
+              <li class="nav-item link-button" id="login-link">
+                <%= link_to "Login", user_session_path, class: "nav-link" %>
+              </li>s
+             <% end %>
+            </ul>
+          </div>
+        </nav>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 <!-- Navigation End -->
 
