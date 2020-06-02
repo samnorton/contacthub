@@ -1,37 +1,21 @@
-# README
+#  contacthub
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple app to manage your contacts online.
 
-Things you may want to cover:
+![](https://i.imgur.com/X3FK6Ke.png)
 
-- Ruby version
 
-install ruby 2.6.x or use RVM
+## Installation
 
-- System dependencies
+```
+git clone git@github.com:samnorton/contacthub.git
+cd contacthub
+rails db:create
+rails db:migrate
+rails s
+open localhost:3000
+```
 
-install bundler and gem
+## App Preview
 
-- Configuration
-
-bundle install
-
-- Database creation
-
-install postgress, create database and user with password to match the config file
-
-- Database initialization
-
-bundle exec rails db:migrate
-bundle exec rails db:seed
-
-- How to run the test suite
-
-bundle exec rails test
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
+Visit https://contacthub.herokuapp.com/ for a preview of the app.
