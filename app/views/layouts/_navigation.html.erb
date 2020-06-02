@@ -27,6 +27,11 @@
 
                     <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "dropdown-item #{active_class_white(edit_user_registration_path(current_user))}" %>
                     <%= link_to "My Contacts", contacts_path, class: "dropdown-item #{active_class_white('/dashboard/contacts')}" %>
+
+                    <% if current_user.admin? %>
+                      <%= link_to "Users List", users_path, class: "dropdown-item #{active_class_white('/dashboard/users')}" %>
+                     <% end %>
+                   
                     <div class="dropdown-divider"></div>
                     <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
                   </div>

@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
     rescue_from ActiveRecord::RecordNotFound, with: :show_404
 
+
     def after_sign_in_path_for(resource)
        stored_location_for(resource) || contacts_path
     end
@@ -24,11 +25,13 @@ class ApplicationController < ActionController::Base
     private
 
     def user_not_authorized
-      flash[:danger] = "You are not authorized to perform this action."
-      redirect_to action: :index
+      respond_to do |format|
+          format.html { redirect_to contacts_path, notice: 'You are not allowed to access this page.' }
+          format.js
+      end
     end 
 
     def show_404
-      render template: "errors/404", status: 404
+      render "404", status: 404
     end 
 end

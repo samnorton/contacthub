@@ -17,5 +17,9 @@ Rails.application.routes.draw do
   end 
 
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  match '*path', via: :all, to: 'errors#show_404', constraints: lambda { |req|
+  req.path.exclude? 'rails/active_storage'
+}
+
 end
